@@ -1,0 +1,222 @@
+/* ============ CONTENEDOR PRINCIPAL - TEMA ESPACIAL ============ */
+.game-container {
+  width: 1000px;
+  height: 450px;
+  background: linear-gradient(
+    180deg,
+    #07071a 0%,
+    #141428 30%,
+    #1a0a2e 60%,
+    #0d0d1a 100%
+  );
+  border: 2px solid #4a4a8a;
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.6),
+    0 0 60px rgba(80, 60, 200, 0.12),
+    inset 0 1px 0 rgba(150, 120, 255, 0.08);
+  outline: none;
+  cursor: default;
+}
+
+/* ============ ESTRELLAS FONDO ============ */
+.game-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(2px 2px at 20px 30px, #fff, transparent),
+    radial-gradient(2px 2px at 50px 80px, #ddd, transparent),
+    radial-gradient(1px 1px at 100px 40px, #fff, transparent),
+    radial-gradient(1px 1px at 140px 90px, #ddd, transparent),
+    radial-gradient(2px 2px at 190px 25px, #fff, transparent),
+    radial-gradient(1px 1px at 240px 55px, #ddd, transparent),
+    radial-gradient(1px 1px at 300px 15px, #fff, transparent),
+    radial-gradient(2px 2px at 350px 85px, #ddd, transparent),
+    radial-gradient(1px 1px at 400px 45px, #fff, transparent),
+    radial-gradient(2px 2px at 450px 70px, #ddd, transparent),
+    radial-gradient(1px 1px at 510px 35px, #fff, transparent),
+    radial-gradient(1px 1px at 560px 65px, #ddd, transparent),
+    radial-gradient(2px 2px at 610px 20px, #fff, transparent),
+    radial-gradient(1px 1px at 660px 75px, #ddd, transparent),
+    radial-gradient(2px 2px at 710px 50px, #fff, transparent),
+    radial-gradient(1px 1px at 760px 30px, #ddd, transparent),
+    radial-gradient(1px 1px at 810px 80px, #fff, transparent),
+    radial-gradient(2px 2px at 860px 45px, #ddd, transparent),
+    radial-gradient(1px 1px at 910px 60px, #fff, transparent),
+    radial-gradient(1px 1px at 960px 25px, #ddd, transparent);
+  background-size: 100% 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.9;
+}
+
+/* ============ SUELO ANIMADO - PISTA LÁSER ESPACIAL ============ */
+.ground {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 200%;
+  height: 3px;
+  background: repeating-linear-gradient(
+    90deg,
+    #6a5acd 0px,
+    #6a5acd 18px,
+    #9370db 18px,
+    #9370db 20px,
+    transparent 20px,
+    transparent 48px
+  );
+  animation: scrollGround 0.8s linear infinite;
+  z-index: 2;
+  box-shadow:
+    0 0 8px #6a5acd,
+    0 0 20px rgba(106, 90, 205, 0.3);
+}
+
+@keyframes scrollGround {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ============ DINO CON BRILLO ESPACIAL ============ */
+.dino {
+  position: absolute;
+  bottom: 2px;
+  left: 10px;
+  font-size: 40px;
+  line-height: 1;
+  z-index: 10;
+  transition:
+    font-size 0.08s ease,
+    transform 0.08s ease,
+    filter 0.15s ease;
+  user-select: none;
+  filter: drop-shadow(0 0 8px rgba(150, 120, 255, 0.5));
+}
+
+.dino.ducking {
+  font-size: 28px;
+  transform: scaleX(1.4);
+  filter: drop-shadow(0 0 8px rgba(150, 120, 255, 0.5));
+}
+
+/* ============ SCORE - NEON ESPACIAL ============ */
+h1.score {
+  position: absolute;
+  top: 12px;
+  right: 20px;
+  font-family: "Courier New", "Consolas", monospace;
+  font-size: 26px;
+  font-weight: 700;
+  color: #00f0ff;
+  z-index: 5;
+  letter-spacing: 2px;
+  text-shadow:
+    0 0 5px #00f0ff,
+    0 0 10px #00f0ff,
+    0 0 20px rgba(0, 240, 255, 0.5);
+  user-select: none;
+  margin: 0;
+}
+
+/* ============ OBSTÁCULOS ============ */
+.obstacle {
+  z-index: 8;
+  user-select: none;
+  pointer-events: none;
+  transition:
+    transform 0.1s ease,
+    opacity 0.15s ease;
+  filter: drop-shadow(0 0 8px rgba(255, 60, 100, 0.4));
+}
+
+/* ============ GAME OVER - ESTILO ESPACIAL ============ */
+.game-over-screen {
+  position: absolute;
+  inset: 0;
+  background: rgba(5, 5, 30, 0.85);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.3s ease-out;
+  border: 1px solid rgba(100, 80, 200, 0.2);
+}
+
+.game-over-screen h2 {
+  color: #ff6b9d;
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 0.75rem;
+  text-shadow:
+    0 0 15px rgba(255, 107, 157, 0.6),
+    0 0 30px rgba(255, 107, 157, 0.3),
+    2px 2px 0 rgba(0, 0, 0, 0.3);
+  user-select: none;
+}
+
+.game-over-screen p {
+  color: #c8b8ff;
+  font-size: 1.15rem;
+  font-weight: 500;
+  opacity: 0.95;
+  user-select: none;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 0 8px rgba(200, 184, 255, 0.4);
+}
+
+/* ============ BOTÓN REINICIO ESPACIAL ============ */
+.game-over-screen button {
+  padding: 12px 32px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  font-family: "Courier New", "Consolas", monospace;
+  color: #fff;
+  background: linear-gradient(135deg, #7c4dff, #536dfe);
+  border: 2px solid rgba(150, 120, 255, 0.4);
+  border-radius: 50px;
+  cursor: pointer;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    filter 0.15s ease;
+  box-shadow:
+    0 4px 15px rgba(124, 77, 255, 0.4),
+    0 0 20px rgba(124, 77, 255, 0.15);
+  letter-spacing: 1px;
+  user-select: none;
+}
+
+.game-over-screen button:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow:
+    0 6px 25px rgba(124, 77, 255, 0.6),
+    0 0 35px rgba(124, 77, 255, 0.25);
+  filter: brightness(1.15);
+  border-color: rgba(150, 120, 255, 0.8);
+}
+
+.game-over-screen button:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow:
+    0 2px 8px rgba(124, 77, 255, 0.4),
+    0 0 10px rgba(124, 77, 255, 0.1);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
