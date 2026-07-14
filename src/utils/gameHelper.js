@@ -40,15 +40,15 @@ export const calculateVelocity = (score) => {
   }
   // Rango 2: 200 a 400 (Nota: El rango anterior ya cubre 200, revisa tus límites)
   else if (score >= 200 && score <= 400) {
-    nuevaVelocidad = 5;
+    nuevaVelocidad = 6;
   }
   // Rango 3: 400 a 600
   else if (score >= 400 && score <= 600) {
-    nuevaVelocidad = 6;
+    nuevaVelocidad = 8;
   }
   // Rango 4: Mayor que 600
   else if (score > 600) {
-    nuevaVelocidad = 7;
+    nuevaVelocidad = 10;
   }
   // Si no cumple ninguna condición, mantiene el valor base (3)
 
